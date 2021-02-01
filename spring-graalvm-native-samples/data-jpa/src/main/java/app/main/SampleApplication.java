@@ -2,6 +2,7 @@ package app.main;
 
 import java.util.Optional;
 
+import app.main.model.Bar;
 import app.main.model.Foo;
 import app.main.model.FooRepository;
 
@@ -40,8 +41,8 @@ public class SampleApplication {
 		return route(GET("/"), request -> ok().body(findOne()));
 	}
 
-	private Foo findOne() {
-		return entities.findById(1L).get();
+	private String findOne() {
+		return entities.getBarByValue(1L).toString();
 	}
 
 	public static void main(String[] args) {

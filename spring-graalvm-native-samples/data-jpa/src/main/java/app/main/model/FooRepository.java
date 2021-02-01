@@ -16,10 +16,14 @@
 package app.main.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  * @author Dave Syer
  *
  */
 public interface FooRepository extends JpaRepository<Foo, Long> {
+
+    @Query("select NEW app.main.model.Bar(foo.id, foo.value) from Foo foo where foo.id = ?1")
+    Bar getBarByValue(Long value);
 }
